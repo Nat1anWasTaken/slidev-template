@@ -1,0 +1,29 @@
+/*
+ * CJK fonts. Google Sans has no Chinese glyphs, so Chinese text uses two small
+ * self-hosted subsets of Noto Sans TC / Noto Serif TC (SIL OFL 1.1). They only
+ * contain the characters the deck uses: after changing on-slide text, run
+ * `pnpm fonts` (rebuild) or `pnpm fonts:check` (report missing characters).
+ * Any character missing from a subset falls back to the next family in the
+ * stack (Microsoft JhengHei on Windows, PingFang TC on macOS), never to tofu.
+ */
+@font-face {
+  font-family: 'Noto Sans TC Deck';
+  src: url('../assets/fonts/NotoSansTC-subset.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Serif TC Deck';
+  /* Static Medium (500) instance, used for every weight to avoid faux bold */
+  src: url('../assets/fonts/NotoSerifTC-subset.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+:root {
+  --deck-font-sans: 'Google Sans', 'Product Sans', 'Noto Sans TC Deck', 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', Arial, sans-serif;
+  --deck-font-serif: 'Noto Serif TC Deck', 'Noto Serif TC', 'Source Han Serif TC', 'Songti TC', 'PMingLiU', serif;
+}
